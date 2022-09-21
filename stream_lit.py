@@ -2,7 +2,7 @@ import streamlit
 import pandas
 import snowflake.connector
 import requests
-from urllib.error from URLError
+from urllib.error import URLError
 streamlit.title('My Streamlit App')
 streamlit.header('How to build Stram Lit Apps ?')
 streamlit.text('1. Sign into Stream Lit account through GitHub')
