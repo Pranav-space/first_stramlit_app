@@ -1,4 +1,8 @@
 import streamlit
+import pandas
+import snowflake.connector
+import requests
+from urllib.error from URLError
 streamlit.title('My Streamlit App')
 streamlit.header('How to build Stram Lit Apps ?')
 streamlit.text('1. Sign into Stream Lit account through GitHub')
@@ -10,7 +14,7 @@ streamlit.text('3.🎂Hard-Boiled Free-Range Egg')
 
 
 
-import pandas
+
 my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.com/dabw/fruit_macros.txt")
 # Let's put a pick list here so they can pick the fruit they want to include 
 my_fruit_list = my_fruit_list.set_index('Fruit')
@@ -34,7 +38,9 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # Output the screen as table
 streamlit.dataframe(fruityvice_normalized)
-import snowflake.connector
+#dont run past here while we troubleshoot
+streamlit.stop()
+
 
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
@@ -46,7 +52,7 @@ streamlit.dataframe(my_data_rows)
 #Allow the end user to add a fruit to the list
 fruit_choice = streamlit.text_input('What fruit would you like to add?','Kiwi')
 streamlit.write('Thanks for adding: ', fruit_choice)
-import requests
+
 
 #Adding for now
 my_cur.execute("insert into fruit_load_list values('for streamlit')");
